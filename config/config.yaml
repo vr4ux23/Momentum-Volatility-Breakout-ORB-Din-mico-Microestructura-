@@ -1,0 +1,21 @@
+schedule:
+  start_hour: 8
+  end_hour: 17
+
+risk_management:
+  max_daily_drawdown_pct: 4.0
+  calc_drawdown_on_equity: true
+  risk_tiers_usd:
+    1: 50.0
+    2: 100.0
+    3: 200.0
+
+execution:
+  magic_number: 777777
+  max_slippage_points: 15
+  atr_multiplier_sl: 2.0
+
+ml_filter:
+  model_path: "models/rf_classifier_v1.pkl"
+  min_probability_threshold: 0.60
+  features_window_size: 20

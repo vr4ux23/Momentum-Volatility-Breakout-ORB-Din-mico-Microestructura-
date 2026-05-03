@@ -1,0 +1,10 @@
+MetaTrader5
+pandas
+numpy
+scikit-learn
+joblib
+psycopg2-binary
+SQLAlchemy
+pyyaml
+python-dotenv
+pytz
