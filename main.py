@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 import logging
@@ -36,8 +37,13 @@ class TradingBot:
         self.position_manager = PositionManager(timeframe=mt5.TIMEFRAME_M5, atr_multiplier=self.config['execution']['atr_multiplier_sl'])
         self.ml_filter = MLTradeFilter(self.config)
 
-        # En prod leer de .env, aquí simplificado:
-        db_conf = {'DB_HOST':'localhost', 'DB_USER':'postgres', 'DB_PASS':'postgres', 'DB_NAME':'hft'}
+        db_conf = {
+            'DB_HOST': os.getenv('DB_HOST', 'localhost'),
+            'DB_PORT': os.getenv('DB_PORT', '5432'),
+            'DB_USER': os.getenv('DB_USER', 'postgres'),
+            'DB_PASS': os.getenv('DB_PASS', ''),
+            'DB_NAME': os.getenv('DB_NAME', 'hft'),
+        }
         self.pg_logger = PostgresLogger(db_conf)
 
         self.running = True

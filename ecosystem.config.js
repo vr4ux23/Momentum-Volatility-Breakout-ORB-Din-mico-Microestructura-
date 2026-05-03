@@ -2,7 +2,7 @@ module.exports = {
     apps:[{
         name: "HFT_Momentum_Bot",
         script: "main.py",
-        interpreter: "python",
+        interpreter: "./venv/Scripts/python.exe",
         autorestart: true,
         watch: false,
         max_restarts: 10,

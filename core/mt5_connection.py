@@ -1,4 +1,5 @@
 import logging
+import os
 import time
 import MetaTrader5 as mt5
 from typing import Optional, Dict
@@ -9,9 +10,13 @@ class MT5Connector:
     """Gestiona la conexión resiliente con el terminal MetaTrader 5."""
 
     def connect(self, max_retries: int = 5) -> bool:
+        mt5_path = os.getenv('MT5_PATH')
+        init_kwargs = {}
+        if mt5_path:
+            init_kwargs['path'] = mt5_path
         retries = 0
         while retries < max_retries:
-            if mt5.initialize():
+            if mt5.initialize(**init_kwargs):
                 logger.info("Conexión MT5 establecida correctamente.")
                 return True
             retries += 1
